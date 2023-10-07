@@ -1,5 +1,6 @@
 import requests
 
+
 def fetch_random_word(api_url, api_key):
     while True:
         response = requests.get(api_url, headers={

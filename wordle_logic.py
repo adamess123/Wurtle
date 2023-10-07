@@ -4,7 +4,6 @@ from api_request import fetch_random_word
 from word_coloring import word_coloring
 import sys
 from colorama import init
-from replay import replay
 
 api_url = 'https://api.api-ninjas.com/v1/randomword'
 api_key = '5mZJECPTxfUjrteYfn47zg==qRVV0l9npNg4rL9p'
@@ -18,10 +17,8 @@ def run_wordle_game():
 
     print("Given Word: " + word)
 
-    if (word_coloring(word) == True):
+    word_coloring(word)
 
-        while (replay()):
-            run_wordle_game()
 
 
     # Every time a green letter is flagged, check entire green_check list

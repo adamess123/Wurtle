@@ -1,8 +1,7 @@
+from wordle_logic import run_wordle_game
+from termcolor import cprint
+from pyfiglet import figlet_format
+
 def replay():
-    retry = input("Play again? ")#cprint(figlet_format('PLAY AGAIN? ', font='starwars'), 'yellow', 'on_blue'))
-    if retry.lower == 'yes' or 'y':
-       return True
-    elif retry.lower == 'n' or 'n':
-       return False
-    else:
-        exit()
+    retry = input(cprint(figlet_format('PLAY AGAIN?', font='starwars'), 'yellow', 'on_blue'))
+    return retry.lower() in ['y', 'yes']
