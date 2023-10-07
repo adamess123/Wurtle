@@ -22,7 +22,7 @@ green_check = []
 for x in range (0, len(word)):
     green_check.append(0)
 
-for element in range(1, 6):
+for element in range(0, 6):
     print(Fore.WHITE)
     val = input("Enter word attempt: ")
     print("Attempted Word is: " + val)
@@ -50,7 +50,10 @@ for element in range(1, 6):
     # Every time a green letter is flagged, check entire green_check list
     # To see if all letters are flagged green. If so, user has won.
     for check in range(0, len(word)):
-        if (green_check[check] == 1):
-            continue
-    print("User has won")
-    exit()
+        if (green_check[check] == 0):
+            break
+        if (check == len(word) - 1 and green_check[check] == 1):
+            print()
+            print(Fore.WHITE + "User has won")
+            exit()
+        
