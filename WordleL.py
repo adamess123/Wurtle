@@ -1,15 +1,21 @@
 import requests
+import json
+from colorama import Fore, Back, Style
 
-# These code snippets use an open-source library. http://unirest.io/python
-response = requests.get("https://wordsapiv1.p.mashape.com/words?random=true",
-    headers={
-    "X-Mashape-Key": "f974116797msh3d546fc58c8e9bfp185392jsn89d99727c669",
-    "Accept": "application/json"
-  }
-)
+# While loop and Api call until 5 letter word is obtained.
+# while (len(word) != 5)
+api_url = 'https://api.api-ninjas.com/v1/randomword'
+response = requests.get(api_url, headers = {
+    'X-Api-Key': '5mZJECPTxfUjrteYfn47zg==qRVV0l9npNg4rL9p'
+}). json()
 
-print(response.json())
-# word = response.json()['word'[0]]
+print(response)
 
-# # if (word )
-# print(word)
+# toLower the word
+
+# ===================================================
+word = "test"
+
+for element in range(0, len(word)):
+    print(Fore.GREEN + word[element], end ="")
+    
