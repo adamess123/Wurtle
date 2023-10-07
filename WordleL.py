@@ -16,6 +16,40 @@ print(response)
 # ===================================================
 word = "test"
 
-for element in range(0, len(word)):
-    print(Fore.GREEN + word[element], end ="")
-    
+# List to check if all letters become green (WIN)
+# List is full of zeros. If user gets a green letter, index will flag = 1.
+green_check = []
+for x in range (0, len(word)):
+    green_check.append(0)
+
+for element in range(1, 6):
+    print(Fore.WHITE)
+    val = input("Enter word attempt: ")
+    print("Attempted Word is: " + val)
+
+    for element in range(0, len(word)):
+        yellow = 0
+
+        # If letter lines up in the same place, print green.
+        if (word[element] == val[element]):
+            green_check[element] = 1
+
+            # Every time a green letter is flagged, check entire green_check list
+            # To see if all letters are flagged green. If so, user has won.
+            for check in range(0, len(word)):
+                if (green_check[check] == 1):
+                    continue
+                else:
+                    break
+            
+        else:
+            # Nested for-loop to check for yellow color coding.
+            for check in range(0, len(word)):
+                temp = word[check]
+                if (val[element] == word[check]):
+                    print(Fore.YELLOW + val[element], end ="")
+                    yellow = 1
+                    break
+            # If yellow is not flagged, then only other option must be white/incorrect letter.
+            if (yellow == 0):
+                print(Fore.WHITE + val[element], end ="")
