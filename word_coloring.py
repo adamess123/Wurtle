@@ -4,6 +4,7 @@ from pyfiglet import figlet_format
 
 
 def word_coloring(word):
+    losses = 0
     for element in range(0, 6):
 
         print(Fore.WHITE)
@@ -51,9 +52,13 @@ def word_coloring(word):
                 # To see if all letters are flagged green. If so, user has won.
         for check in range(0, len(word)):
             if green_check[check] == 0:
+                losses += 1
+                if losses == 6:
+                    print("\nYou lost, the word was " + word)
                 break
+
             if check == len(word) - 1 and green_check[check] == 1:
                 print()
                 cprint(figlet_format('USER \(^_^)/ WON', font='starwars'), 'yellow', 'on_blue', attrs=['bold'])
-                return
+                return 0
         print()
