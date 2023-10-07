@@ -1,21 +1,29 @@
 import requests
 import json
 from colorama import Fore, Back, Style
+import sys
+from colorama import init
+init(strip = not sys.stdout.isatty())
+from termcolor import cprint
+from pyfiglet import figlet_format
 
-# While loop and Api call until 5 letter word is obtained.
-# while (len(word) != 5)
+cprint(figlet_format('WORDLE', font='starwars'), 'yellow', 'on_blue', attrs=['bold'])
+
 api_url = 'https://api.api-ninjas.com/v1/randomword'
-response = requests.get(api_url, headers = {
-    'X-Api-Key': '5mZJECPTxfUjrteYfn47zg==qRVV0l9npNg4rL9p'
-}). json()
 
-print(response)
+word = None
 
-# toLower the word
+while True:
+    response = requests.get(api_url, headers = {
+        'X-Api-Key': '5mZJECPTxfUjrteYfn47zg==qRVV0l9npNg4rL9p'
+    }). json()
 
+    if len(response["word"]) == 5:
+        word = response["word"].lower()
+        break
 # ===================================================
-word = "test"
 
+print("Given Word: " + word)
 # List to check if all letters become green (WIN)
 # List is full of zeros. If user gets a green letter, index will flag = 1.
 green_check = []
@@ -54,6 +62,7 @@ for element in range(0, 6):
             break
         if (check == len(word) - 1 and green_check[check] == 1):
             print()
-            print(Fore.WHITE + "User has won")
+            cprint(figlet_format('USER \(^_^)/ WON', font='starwars'), 'yellow', 'on_blue', attrs=['bold'])
             exit()
+    print()
         
