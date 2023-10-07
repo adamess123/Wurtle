@@ -17,7 +17,7 @@ def word_coloring(word):
         for keys in word:
             letters[keys] = letters.get(keys, 0) + 1
 
-        print("Count of chars:\n" + str(letters))
+        #print("Count of chars:\n" + str(letters))
 
         val = input("Enter word attempt: ")
         print("Attempted Word is: " + val)

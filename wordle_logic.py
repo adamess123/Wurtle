@@ -15,7 +15,7 @@ def run_wordle_game():
 
     word = fetch_random_word(api_url, api_key)
 
-    print("Given Word: " + word)
+    #print("Given Word: " + word)
 
     word_coloring(word)
 
