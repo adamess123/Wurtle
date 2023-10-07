@@ -33,14 +33,7 @@ for element in range(1, 6):
         # If letter lines up in the same place, print green.
         if (word[element] == val[element]):
             green_check[element] = 1
-
-            # Every time a green letter is flagged, check entire green_check list
-            # To see if all letters are flagged green. If so, user has won.
-            for check in range(0, len(word)):
-                if (green_check[check] == 1):
-                    continue
-                else:
-                    break
+            print(Fore.GREEN + val[element], end="")
             
         else:
             # Nested for-loop to check for yellow color coding.
@@ -53,3 +46,11 @@ for element in range(1, 6):
             # If yellow is not flagged, then only other option must be white/incorrect letter.
             if (yellow == 0):
                 print(Fore.WHITE + val[element], end ="")
+
+    # Every time a green letter is flagged, check entire green_check list
+    # To see if all letters are flagged green. If so, user has won.
+    for check in range(0, len(word)):
+        if (green_check[check] == 1):
+            continue
+    print("User has won")
+    exit()
