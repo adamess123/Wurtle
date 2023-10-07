@@ -43,6 +43,8 @@ Use the package manager [pip] to install the following packages
 
 
 ## Contributors 
-**Adam Essaydi - Game Logic and README**
-**Daniel Feng - Game Logic and GUI**
-**Nicholas - Game Logic and README**
+Adam Essaydi - Game Logic and README
+
+Daniel Feng - Game Logic and GUI
+
+Nicholas - Game Logic and README
