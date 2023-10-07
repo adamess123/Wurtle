@@ -56,7 +56,11 @@ for element in range(0, 6):
                 print(Fore.WHITE + val[element], end ="")
 
     # Every time a green letter is flagged, check entire green_check list
+<<<<<<< HEAD
     # To see if all letters are flagged green. If so, user has won.
+=======
+    # To see if all letters are flagged green. If so, user has won!
+>>>>>>> 5ca2c1f (Added github files)
     for check in range(0, len(word)):
         if (green_check[check] == 0):
             break
