@@ -2,7 +2,6 @@ from colorama import Fore, Back, Style
 from termcolor import cprint
 from pyfiglet import figlet_format
 
-
 def word_coloring(word):
     for element in range(0, 6):
 
@@ -19,8 +18,13 @@ def word_coloring(word):
 
         #print("Count of chars:\n" + str(letters))
 
-        val = input("Enter word attempt: ")
-        print("Attempted Word is: " + val)
+        while (True):
+            val = input("Enter word attempt: ")
+            if len(val) != 5:
+                print("Must be 5 characters.")
+            else:
+                print("Attempted Word is: " + val)
+                break;
 
         # Pre check count decrease before printing
         for element in range(0, len(word)):
@@ -51,5 +55,8 @@ def word_coloring(word):
             if (check == len(word) - 1 and green_check[check] == 1):
                 print()
                 cprint(figlet_format('USER \(^_^)/ WON', font='starwars'), 'yellow', 'on_blue', attrs=['bold'])
-                exit()
+                return True
         print()
+
+
+
