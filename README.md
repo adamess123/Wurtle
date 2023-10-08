@@ -28,8 +28,10 @@ If you guess the word within six attempts, you win! If not, the game will reveal
 ## Installation
 
 1. Download files from repo
-2. Run pip install -r requirements.txt
-3. Run python app.py
+2. Run "pip freeze > requirements.txt"
+3. Run "pip install -r requirements.txt"
+4. If step 2 & 3 doesn't work, manually install each library with "pip install"
+5. Run python app.py
 
 
 ## Contributors 
@@ -37,4 +39,4 @@ Adam Essaydi - Game Logic, Design, and README
 
 Daniel Feng - Game Logic, Design, and README
 
-Nicholas - Game Logic, Design, and README
+Nicholas Nunez - Game Logic, Design, and README
