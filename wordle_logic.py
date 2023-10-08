@@ -1,5 +1,4 @@
 import sys
-import shutil
 from termcolor import cprint
 from pyfiglet import figlet_format
 from api_request import fetch_random_word
@@ -18,9 +17,4 @@ def run_wordle_game():
     print("Given Word: " + word)
 
     word_coloring(word)
-
-    
-
-    # Every time a green letter is flagged, check entire green_check list
-    # To see if all letters are flagged green. If so, user has won.
 

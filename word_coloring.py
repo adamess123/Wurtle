@@ -1,4 +1,4 @@
-from colorama import Fore, Back, Style
+from colorama import Fore
 from termcolor import cprint
 from pyfiglet import figlet_format
 
