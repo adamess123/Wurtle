@@ -10,13 +10,14 @@ def word_coloring(word):
     console = Console()
     losses = 0
     incorrect_letters = []
-    previous_guesses = []
+    previous_guesses = ""
     for element in range(0, 6):
         if not previous_guesses:
             print("")
         else:
-            print(previous_guesses, end="")
-            print("\n")
+            split_guess = previous_guesses.split('\n')
+            for word in split_guess:
+                print(word)
         print(Fore.WHITE)
 
         green_check = []
@@ -27,8 +28,6 @@ def word_coloring(word):
 
         for keys in word:
             letters[keys] = letters.get(keys, 0) + 1
-
-        # print("Count of chars:\n" + str(letters))
 
         while True:
             val = input("Enter word attempt: ")
@@ -50,8 +49,8 @@ def word_coloring(word):
             # If letter lines up in the same place, print green.
             if word[element] == val[element]:
                 green_check[element] = 1
-                console.print("[black on green]" + val[i] + "[/]", end="")
-                guess = colored(val[i], 'black', 'on_green')
+                console.print("[black on green]" + val[element] + "[/]", end="")
+                guess = colored(val[element], 'black', 'on_green')
                 colored_letters += guess
 
             else:
@@ -69,11 +68,12 @@ def word_coloring(word):
                 # If yellow is not flagged, then only other option must be white/incorrect letter.
                 else:
                     console.print("[black on white]" + val[element] + "[/]", end="")
-                    guess = colored(val[i], 'black', 'on_white')
+                    guess = colored(val[element], 'black', 'on_white')
                     colored_letters += guess
                     if val[element] not in incorrect_letters:
                         incorrect_letters.append(val[element].lower())
-            previous_guesses.append(colored_letters)
+            previous_guesses+=(colored_letters)
+        previous_guesses+= '\n'
 
             # Every time a green letter is flagged, check entire green_check list
             # To see if all letters are flagged green. If so, user has won.
