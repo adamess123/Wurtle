@@ -30,7 +30,7 @@ If you guess the word within six attempts, you win! If not, the game will reveal
 1. Download files from repo
 2. Run "pip freeze > requirements.txt"
 3. Run "pip install -r requirements.txt"
-4. If step 2 & 3 doesn't work, manually install each library with "pip install"
+4. If step 2 & 3 don't work, manually install each library with "pip install"
 5. Run python app.py
 
 
