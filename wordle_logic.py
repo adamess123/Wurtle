@@ -11,10 +11,8 @@ api_key = '5mZJECPTxfUjrteYfn47zg==qRVV0l9npNg4rL9p'
 
 def run_wordle_game():
     init(strip=not sys.stdout.isatty())
-    cprint(figlet_format('W O R D L E', font='larry3d'), 'yellow', attrs=['bold'])
+    cprint(figlet_format('W U R T L E', font='larry3d'), 'yellow', attrs=['bold'])
     word = fetch_random_word(api_url, api_key)
-
-    print("Given Word: " + word)
 
     word_coloring(word)
 
