@@ -24,6 +24,8 @@ def word_coloring(word):
             val = input("Enter word attempt: ")
             if len(val) != 5:
                 print("Must be 5 characters.")
+            if not val.isalpha():
+                print("Input must be letters.")
             else:
                 print("Attempted Word is: " + val)
                 break
