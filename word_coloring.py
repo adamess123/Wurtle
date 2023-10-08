@@ -5,16 +5,18 @@ from rich.console import Console
 from rich.table import Table
 from rich.syntax import Syntax
 
+
 def word_coloring(word):
     console = Console()
     losses = 0
-    incorrect_letters=[]
+    incorrect_letters = []
+    previous_guesses = []
     for element in range(0, 6):
-        previous_guesses = []
         if not previous_guesses:
             print("")
         else:
-            console.print(previous_guesses)
+            print(previous_guesses, end="")
+            print("\n")
         print(Fore.WHITE)
 
         green_check = []
@@ -39,42 +41,42 @@ def word_coloring(word):
                 break
 
         # Pre check count decrease before printing
-        for i in range(0, len(word)):
-            if word[i] == val[i]:
-                letters[val[i]] -= 1
+        for element in range(0, len(word)):
+            if word[element] == val[element]:
+                letters[val[element]] -= 1
 
-        for i in range(0, len(word)):
-            colored_letters=""
+        for element in range(0, len(word)):
+            colored_letters = ""
             # If letter lines up in the same place, print green.
-            if word[i] == val[i]:
-                green_check[i] = 1
+            if word[element] == val[element]:
+                green_check[element] = 1
                 console.print("[black on green]" + val[i] + "[/]", end="")
                 guess = colored(val[i], 'black', 'on_green')
                 colored_letters += guess
 
             else:
-                if letters.get(val[i], 0) == 0:
-                    console.print("[black on white]" + val[i] + "[/]", end="")
+                if letters.get(val[element], 0) == 0:
+                    console.print("[black on white]" + val[element] + "[/]", end="")
                     guess = colored(val[element], 'black', 'on_white')
                     colored_letters += guess
-                    if val[i] not in incorrect_letters:
-                        incorrect_letters.append(val[i].lower())
+                    if val[element] not in incorrect_letters:
+                        incorrect_letters.append(val[element].lower())
 
-                elif letters[val[i]] >= 1:
-                    console.print("[black on yellow]" + val[i] + "[/]", end="")
-                    guess = colored(val[i], 'black', 'on_yellow')
+                elif letters[val[element]] >= 1:
+                    console.print("[black on yellow]" + val[element] + "[/]", end="")
+                    guess = colored(val[element], 'black', 'on_yellow')
                     colored_letters += guess
                 # If yellow is not flagged, then only other option must be white/incorrect letter.
                 else:
-                    console.print("[black on white]" + val[i] + "[/]", end="")
+                    console.print("[black on white]" + val[element] + "[/]", end="")
                     guess = colored(val[i], 'black', 'on_white')
-                    colored_letters+=guess
-                    if val[i] not in incorrect_letters:
-                        incorrect_letters.append(val[i].lower())
+                    colored_letters += guess
+                    if val[element] not in incorrect_letters:
+                        incorrect_letters.append(val[element].lower())
             previous_guesses.append(colored_letters)
 
-                # Every time a green letter is flagged, check entire green_check list
-                # To see if all letters are flagged green. If so, user has won.
+            # Every time a green letter is flagged, check entire green_check list
+            # To see if all letters are flagged green. If so, user has won.
         print("\nYou have used the following incorrect letters: ")
         print(', '.join(incorrect_letters))
 
