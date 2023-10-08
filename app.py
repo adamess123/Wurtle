@@ -7,5 +7,6 @@ if __name__ == "__main__":
     while True:
         run_wordle_game()
         if not replay():
-            cprint(figlet_format('BYE =D', font='starwars'), 'yellow')
+            cprint(figlet_format('BYE =D', font='starwars'), 
+                                 'yellow', end="\r")
             exit()
