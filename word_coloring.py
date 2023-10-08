@@ -5,6 +5,7 @@ from pyfiglet import figlet_format
 
 def word_coloring(word):
     losses = 0
+    incorrect_letters=[]
     for element in range(0, 6):
 
         print(Fore.WHITE)
@@ -27,7 +28,7 @@ def word_coloring(word):
             if not val.isalpha():
                 print("Input must be letters.")
             else:
-                print("Attempted Word is: " + val)
+                print("Attempted Word is: " + val + "")
                 break
 
         # Pre check count decrease before printing
@@ -44,14 +45,24 @@ def word_coloring(word):
             else:
                 if letters.get(val[element], 0) == 0:
                     print(Fore.WHITE + val[element], end="")
+                    if val[element] not in incorrect_letters:
+                        incorrect_letters.append(val[element].lower())
 
                 elif letters[val[element]] >= 1:
                     print(Fore.YELLOW + val[element], end="")
+
                 # If yellow is not flagged, then only other option must be white/incorrect letter.
                 else:
                     print(Fore.WHITE + val[element], end="")
+                    if val[element] not in incorrect_letters:
+                        incorrect_letters.append(val[element].lower())
+
+
                 # Every time a green letter is flagged, check entire green_check list
                 # To see if all letters are flagged green. If so, user has won.
+        print("\nYou have used the following incorrect letters: ")
+        print(', '.join(incorrect_letters))
+
         for check in range(0, len(word)):
             if green_check[check] == 0:
                 losses += 1
